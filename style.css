@@ -21,24 +21,27 @@
   margin-bottom: 20px;
 }
 
+.verify-card {
+  display: flex;
+  height: 60px;
+
+}
+
 .number-card {
   min-width: 200px;
-  height: 40px;
+  height: 100%;
   font-size: 30px;
   padding: 20px 10px;
 }
 
-.verify-card {
-  display: flex;
-  flex-direction: column;
-}
+
 
 .btn {
   transition: .2s linear;
   position: relative;
   width: 160px;
-  height: 60px;
-  margin-top: 20px;
+  height: 100%;
+  margin-left: 20px;
   font-size: 22px;
   align-self: center;
   background-color: coral;
@@ -49,4 +52,20 @@
 
 .btn:hover{
   background-color: chocolate;
+}
+
+.result{
+  min-width: 400px;
+  margin-top: 20px;
+  padding: 25px 40px;
+  font-size: 28px;
+  height: 40px;
+  border: 2px solid black;
+  background-color: white;
+}
+
+.result-text{
+  display: block;
+  line-height: 0;
+  text-align: center;
 }

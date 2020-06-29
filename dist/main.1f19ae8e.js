@@ -117,9 +117,114 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"main.js":[function(require,module,exports) {
+})({"modules/verifyCard.js":[function(require,module,exports) {
+"use strict";
 
-},{}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var resultText = document.querySelector(".result-text");
+
+function checkCardNumber(number) {
+  if (number.length === 0) return alert("podaj numer karty");
+  var numberCard = removeSpaceAndDash(number);
+  var checkIsNumber = !isNaN(Number(numberCard));
+
+  if (checkIsNumber) {
+    var reverseNumbers = numberCard.split("").reverse();
+    var oddNumber = filterNumbers(reverseNumbers, 1);
+    var evenNumber = filterNumbers(reverseNumbers, 0);
+    var resultAlgorithmLuhna = algorithmLuhna(oddNumber, evenNumber);
+
+    if (resultAlgorithmLuhna) {
+      whatACard(numberCard);
+    } else {
+      resultText.textContent = "Nieprawidłowy";
+    }
+  }
+}
+
+var algorithmLuhna = function algorithmLuhna(oddNumber, evenNumber) {
+  var multiplyOddNumber = oddNumber.map(function (numb) {
+    return numb * 2;
+  }).toString().split(",").join("").split("");
+  var sumMultiplyOddNumber = sumNumbers(multiplyOddNumber);
+  var sumEvenNumber = sumNumbers(evenNumber);
+  return (sumMultiplyOddNumber + sumEvenNumber) % 10 === 0;
+};
+
+var removeSpaceAndDash = function removeSpaceAndDash(number) {
+  return number.replace(/[ -]/g, "");
+};
+
+var filterNumbers = function filterNumbers(number, oddOrEven) {
+  var numbers = number.filter(function (numb, index) {
+    return index % 2 === oddOrEven;
+  });
+  return numbers;
+};
+
+var sumNumbers = function sumNumbers(number) {
+  return number.reduce(function (a, b) {
+    return parseInt(a) + parseInt(b);
+  });
+};
+
+var whatACard = function whatACard(number) {
+  var cards = [{
+    name: "Mastercard",
+    firstNumbers: [22, 51, 52, 53, 54, 55],
+    lengthNumber: [16],
+    sliceNumber: 2
+  }, {
+    name: "American  Express",
+    firstNumbers: [34, 37],
+    lengthNumber: [15],
+    sliceNumber: 2
+  }, {
+    name: "Visa",
+    firstNumbers: [4],
+    lengthNumber: [13, 16],
+    sliceNumber: 1
+  }];
+  cards.map(function (_ref) {
+    var name = _ref.name,
+        firstNumbers = _ref.firstNumbers,
+        lengthNumber = _ref.lengthNumber,
+        sliceNumber = _ref.sliceNumber;
+    var sliceNum = number.slice(0, sliceNumber);
+    var filterFirstNumbers = firstNumbers.filter(function (el) {
+      return el == sliceNum;
+    }).join("");
+    var filterLengthNumber = lengthNumber.filter(function (el) {
+      return el === number.length;
+    });
+
+    if (filterFirstNumbers && filterLengthNumber) {
+      resultText.textContent = name;
+    }
+  });
+};
+
+var _default = checkCardNumber;
+exports.default = _default;
+},{}],"main.js":[function(require,module,exports) {
+"use strict";
+
+var _verifyCard = _interopRequireDefault(require("./modules/verifyCard"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var verifyCard = document.querySelector(".verify-card");
+var inputNumber = document.querySelector(".number-card");
+var btn = document.querySelector(".btn");
+verifyCard.addEventListener('submit', function (e) {
+  e.preventDefault();
+  (0, _verifyCard.default)(inputNumber.value);
+  inputNumber.value = '';
+});
+},{"./modules/verifyCard":"modules/verifyCard.js"}],"../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -147,7 +252,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59876" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63505" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
