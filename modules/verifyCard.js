@@ -11,6 +11,7 @@ function checkCardNumber(number) {
     const oddNumber = filterNumbers(reverseNumbers, 1);
     const evenNumber = filterNumbers(reverseNumbers, 0);
     const resultAlgorithmLuhna = algorithmLuhna(oddNumber, evenNumber);
+
     if (resultAlgorithmLuhna) {
       whatACard(numberCard);
     } else {
@@ -58,17 +59,21 @@ const whatACard = (number) => {
     {
       name: "Visa",
       firstNumbers: [4],
-      lengthNumber: [13,16],
+      lengthNumber: [13, 16],
       sliceNumber: 1,
     },
   ];
 
   cards.map(({ name, firstNumbers, lengthNumber, sliceNumber }) => {
     const sliceNum = number.slice(0, sliceNumber);
-    const filterFirstNumbers = firstNumbers.filter((el) => el == sliceNum).join("");
-    const filterLengthNumber = lengthNumber.filter(el => el === number.length) 
-    if (filterFirstNumbers && filterLengthNumber ) {
+    const filterFirstNumbers = firstNumbers
+      .filter((el) => el == sliceNum)
+      .join("");
+    const filterLengthNumber = lengthNumber.some((el) => el === number.length);
+    if (filterFirstNumbers && filterLengthNumber) {
       resultText.textContent = name;
+    } else {
+      resultText.textContent = "Nieprawidłowy";
     }
   });
 };

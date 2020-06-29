@@ -318,12 +318,14 @@ parcelRequire = function (modules, cache, entry, globalName) {
         var filterFirstNumbers = firstNumbers.filter(function (el) {
           return el == sliceNum;
         }).join("");
-        var filterLengthNumber = lengthNumber.filter(function (el) {
+        var filterLengthNumber = lengthNumber.some(function (el) {
           return el === number.length;
         });
 
         if (filterFirstNumbers && filterLengthNumber) {
           resultText.textContent = name;
+        } else {
+          resultText.textContent = "Nieprawidłowy";
         }
       });
     };
@@ -381,7 +383,7 @@ parcelRequire = function (modules, cache, entry, globalName) {
     if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
       var hostname = "" || location.hostname;
       var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-      var ws = new WebSocket(protocol + '://' + hostname + ':' + "63505" + '/');
+      var ws = new WebSocket(protocol + '://' + hostname + ':' + "51294" + '/');
 
       ws.onmessage = function (event) {
         checkedAssets = {};
@@ -587,7 +589,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63505" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51294" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
