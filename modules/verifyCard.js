@@ -69,12 +69,10 @@ const whatACard = (number) => {
     const filterFirstNumbers = firstNumbers
       .filter((el) => el == sliceNum)
       .join("");
-    const filterLengthNumber = lengthNumber.some((el) => el === number.length);
+    const filterLengthNumber = lengthNumber.some((el) => el ===  number.length); 
     if (filterFirstNumbers && filterLengthNumber) {
       resultText.textContent = name;
-    } else {
-      resultText.textContent = "Nieprawidłowy";
-    }
+    } 
   });
 };
 

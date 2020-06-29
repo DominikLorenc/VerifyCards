@@ -203,8 +203,6 @@ var whatACard = function whatACard(number) {
 
     if (filterFirstNumbers && filterLengthNumber) {
       resultText.textContent = name;
-    } else {
-      resultText.textContent = "Nieprawidłowy";
     }
   });
 };
