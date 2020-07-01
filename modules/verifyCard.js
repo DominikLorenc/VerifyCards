@@ -11,6 +11,7 @@ function checkCardNumber(number) {
     const oddNumber = filterNumbers(reverseNumbers, 1);
     const evenNumber = filterNumbers(reverseNumbers, 0);
     const resultAlgorithmLuhna = algorithmLuhna(oddNumber, evenNumber);
+    console.log(resultAlgorithmLuhna)
 
     if (resultAlgorithmLuhna) {
       whatACard(numberCard);

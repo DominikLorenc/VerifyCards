@@ -136,6 +136,7 @@ function checkCardNumber(number) {
     var oddNumber = filterNumbers(reverseNumbers, 1);
     var evenNumber = filterNumbers(reverseNumbers, 0);
     var resultAlgorithmLuhna = algorithmLuhna(oddNumber, evenNumber);
+    console.log(resultAlgorithmLuhna);
 
     if (resultAlgorithmLuhna) {
       whatACard(numberCard);
@@ -252,7 +253,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51294" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50299" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
