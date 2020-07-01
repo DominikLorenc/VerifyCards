@@ -11,7 +11,6 @@ function checkCardNumber(number) {
     const oddNumber = filterNumbers(reverseNumbers, 1);
     const evenNumber = filterNumbers(reverseNumbers, 0);
     const resultAlgorithmLuhna = algorithmLuhna(oddNumber, evenNumber);
-    console.log(resultAlgorithmLuhna)
 
     if (resultAlgorithmLuhna) {
       whatACard(numberCard);
@@ -70,10 +69,10 @@ const whatACard = (number) => {
     const filterFirstNumbers = firstNumbers
       .filter((el) => el == sliceNum)
       .join("");
-    const filterLengthNumber = lengthNumber.some((el) => el ===  number.length); 
+    const filterLengthNumber = lengthNumber.some((el) => el === number.length);
     if (filterFirstNumbers && filterLengthNumber) {
       resultText.textContent = name;
-    } 
+    }
   });
 };
 
